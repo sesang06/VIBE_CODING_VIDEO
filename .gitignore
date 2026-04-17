@@ -1,0 +1,12 @@
+node_modules/
+out/
+.env
+.env.local
+
+# Downloaded media assets (use LFS or cloud storage instead)
+public/gifs/
+public/videos/
+
+# Audio — copyright-sensitive, not tracked in git
+public/audio/
+public/sfx/

@@ -123,7 +123,7 @@ export const DevScene: React.FC<SceneData> = ({
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  const subtitleH = Math.round(height * 0.22);
+  const subtitleH = Math.round(height * 0.26);
   const imgZoneH = height - subtitleH;
 
   return (
@@ -159,10 +159,10 @@ export const DevScene: React.FC<SceneData> = ({
         <p
           style={{
             fontFamily: "Jalnan2",
-            fontSize: 52,
+            fontSize: 60,
             color: "#ffffff",
             textAlign: "center",
-            textShadow: "0 4px 20px rgba(0,0,0,0.95), 0 0 60px rgba(255,255,255,0.08)",
+            textShadow: "0 4px 20px rgba(0,0,0,0.95), 0 0 80px rgba(255,255,255,0.12)",
             lineHeight: 1.5,
             margin: 0,
             opacity: subtitleIn * subtitleOut,

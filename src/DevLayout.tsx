@@ -234,17 +234,42 @@ function PortraitBurst({ cfg, zW, zH }: { cfg: LayoutConfig; zW: number; zH: num
   const a = useAnimations(120);
   const p = cfg.primary;
   const ar = p.naturalW / p.naturalH;
-  const fitH = Math.min(zH * 0.85, (zW * 0.4) / ar) * (1 / Math.max(ar, 0.5));
+  const maxH = zH * 0.88;
+  const maxW = zW * 0.52;
+  const fitH = Math.min(maxH, maxW / ar);
   const fitW = fitH * ar;
 
   return (
     <div style={{ position: "relative", width: zW, height: zH, display: "flex", alignItems: "center", justifyContent: "center" }}>
       {renderMedia(p, {
-        width: Math.min(fitW, zW * 0.45),
-        height: Math.min(fitH, zH * 0.85),
+        width: fitW,
+        height: fitH,
         objectFit: "contain",
         transform: `scale(${a.kenW}) translateY(${a.float}px)`,
         filter: "drop-shadow(0 28px 56px rgba(0,0,0,0.65))",
+      })}
+      <AccentIcons accents={cfg.accents} zoneW={zW} zoneH={zH} />
+    </div>
+  );
+}
+
+function WideCenter({ cfg, zW, zH }: { cfg: LayoutConfig; zW: number; zH: number }) {
+  const a = useAnimations(120);
+  const p = cfg.primary;
+  const ar = p.naturalW / p.naturalH;
+  const maxH = zH * 0.85;
+  const maxW = zW * 0.82;
+  const fitW = Math.min(maxW, maxH * ar);
+  const fitH = fitW / ar;
+
+  return (
+    <div style={{ position: "relative", width: zW, height: zH, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {renderMedia(p, {
+        width: fitW,
+        height: fitH,
+        objectFit: "contain",
+        transform: `scale(${a.kenW}) translateY(${a.kenH}px)`,
+        filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.6))",
       })}
       <AccentIcons accents={cfg.accents} zoneW={zW} zoneH={zH} />
     </div>
@@ -289,7 +314,7 @@ export function SceneVisuals({ layout, zoneH }: { layout: LayoutConfig; zoneH: n
     case "bg-float":       return <BgFloat    cfg={layout} zW={zW} zH={zH} />;
     case "portrait-burst": return <PortraitBurst cfg={layout} zW={zW} zH={zH} />;
     case "icon-sides":     return <IconSides  cfg={layout} zW={zW} zH={zH} />;
-    case "wide-center":
+    case "wide-center":    return <WideCenter  cfg={layout} zW={zW} zH={zH} />;
     case "center-icons":
     default:               return <CenterIcons cfg={layout} zW={zW} zH={zH} />;
   }

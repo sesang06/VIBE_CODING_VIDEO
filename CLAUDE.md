@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @.claude/skills/remotion/SKILL.md
 
+## Whisper 필사 (OpenAI API)
+
+@.claude/skills/whisper/SKILL.md
+
 ## Commands
 
 ```bash
@@ -279,3 +283,42 @@ In `src/Root.tsx`:
 
 Default **120 frames (4s)** per scene. Scale with text: `Math.max(90, text.length * 6)` frames.  
 Transition overlap: **20 frames** (subtract from total duration calculation).
+
+---
+
+## Design Iteration — Render & Screenshot
+
+Use `npx remotion still` to render a single frame as a PNG and visually inspect layout, colors, and typography **before** committing to a full render. This catches bugs that TypeScript and code review miss.
+
+```bash
+# Render a specific frame at 40% scale (fast, good for layout checks)
+npx remotion still <CompositionId> out/preview/<name>.png --frame=<N> --scale=0.4
+
+# Then read the PNG with the Read tool to view it inline
+```
+
+**When to use:**
+- After writing a new scene — verify layout, text position, and colors at a representative frame
+- When fixing a layout bug — re-render the same frame to confirm the fix
+- Checking transitions — render frames near scene boundaries (e.g. frame at boundary ± 10)
+- Final sanity check before full render
+
+**Workflow:**
+1. Write scene code
+2. `npx remotion still <Comp> out/preview/<scene>-f<N>.png --frame=<N> --scale=0.4`
+3. Read the PNG in-conversation to visually inspect
+4. Fix issues, re-render same frame to verify
+5. Repeat for each scene's representative frame
+
+**Common gotcha — `AbsoluteFill` flex direction:**  
+`AbsoluteFill` defaults to `flexDirection: "column"`. Using `justifyContent: "flex-start"` pushes content to the **top** (not left), and `justifyContent: "flex-end"` pushes to the **bottom** (not right). For horizontal alignment, always set `flexDirection: "row"` explicitly on lyric/text containers.
+
+```tsx
+// Correct — left-aligned text centered vertically
+<AbsoluteFill style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", paddingLeft: "10%" }}>
+
+// Correct — right-aligned text centered vertically  
+<AbsoluteFill style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-end", paddingRight: "10%" }}>
+```
+
+Use the `/preview-scene` slash command as a shortcut: `/preview-scene <CompositionId> <frame> [--scale=0.4]`
