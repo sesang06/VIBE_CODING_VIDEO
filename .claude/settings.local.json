@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b)",
+      "WebFetch(domain:www.remotion.dev)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:remotion.dev)",
+      "Bash(gh api *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(python3 -c \"import sys,json; [print\\(x['name'], x['download_url']\\) for x in json.load\\(sys.stdin\\) if x['type']=='file']\")",
+      "Bash(mkdir -p /c/Users/sesan/WebstormProjects/remotion/.claude/skills/remotion/rules/assets)",
+      "Bash(curl -s https://raw.githubusercontent.com/remotion-dev/skills/main/skills/remotion/rules/assets/charts-bar-chart.tsx -o /c/Users/sesan/WebstormProjects/remotion/.claude/skills/remotion/rules/assets/charts-bar-chart.tsx)",
+      "Bash(curl -s https://raw.githubusercontent.com/remotion-dev/skills/main/skills/remotion/rules/assets/text-animations-typewriter.tsx -o /c/Users/sesan/WebstormProjects/remotion/.claude/skills/remotion/rules/assets/text-animations-typewriter.tsx)",
+      "Bash(curl -s https://raw.githubusercontent.com/remotion-dev/skills/main/skills/remotion/rules/assets/text-animations-word-highlight.tsx -o /c/Users/sesan/WebstormProjects/remotion/.claude/skills/remotion/rules/assets/text-animations-word-highlight.tsx)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(x['name']\\) for x in data]\")",
+      "Bash(curl -s https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/package.json)",
+      "Bash(curl -s https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/SKILLS_DASHBOARD.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/README.md)",
+      "Bash(curl *)",
+      "Bash(npx create-video@latest --help)",
+      "Bash(npx create-video@latest *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"let d=''; process.stdin.on\\('data',c=>d+=c\\); process.stdin.on\\('end',\\(\\)=>{ const j=JSON.parse\\(d\\); console.log\\('meta status:', j.meta?.status\\); console.log\\('data length:', j.data?.length\\); console.log\\('message:', j.message\\); }\\);\")",
+      "Skill(gifpy)",
+      "Bash(find *)",
+      "Bash(python3 -)",
+      "Bash(echo \"Exit: $?\")",
+      "Read(//tmp/**)",
+      "Bash(python3 *)",
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(npx remotion *)",
+      "Bash(ffprobe -v quiet -show_entries format=duration -of csv=p=0 /tmp/test_sfx.mp3)"
+    ]
+  }
+}
