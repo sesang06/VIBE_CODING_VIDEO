@@ -59,7 +59,8 @@ const SCENES: SceneData[] = [
   {
     text: "옛날 개발자들은 완전히 멘탈이 나가버렸습니다.",
     audio: "audio_0_옛날_개발자들은_완전히_멘탈이_나가버렸습니다_.mp3",
-    sfx: "sfx-00-haang.mp3",
+    sfx: "sfx-06-vineboom-bass.mp3",
+    sfxVolume: 0.12,
     durationInFrames: dur(3.892245),
     gradient: G[0],
     layout: {
@@ -71,14 +72,15 @@ const SCENES: SceneData[] = [
         { icon: faFaceFrown, color: "#ff6b6b", size: 52, x: 0.12, y: 0.88, animate: "float", opacity: 0.85 },
       ],
     },
-    pepe: { src: "우는 페페.webp", naturalW: 728, naturalH: 508, position: "top-right", size: 180 },
+    pepe: { src: "79a7b3e378262cbdac9950cdb6df3942.png", naturalW: 420, naturalH: 416, position: "top-right", enterFrame: 39, size: 540 },
   },
   // 1 — 돈에 속아
   {
-    text: "개발자 돈 잘번다고 속아 직업 골랐는데",
-    audio: "audio_1_개발자_돈_잘번다고_속아_직업_골랐는데.mp3",
+    text: "개발자가 돈 잘번다고 속아 개발자를 했는데",
+    audio: "audio_1_개발자가_돈_잘번다고_속아_개발자를_했는데.mp3",
     sfx: "sfx-01-ddung.mp3",
-    durationInFrames: dur(4.937143),
+    sfxDelay: 30,
+    durationInFrames: dur(3.683265),
     gradient: G[1],
     layout: {
       kind: "wide-center",
@@ -89,7 +91,7 @@ const SCENES: SceneData[] = [
         { icon: faMoneyBillWave, color: "#ffee54", size: 44, x: 0.5,  y: 0.06, animate: "float", opacity: 0.6 },
       ],
     },
-    pepe: { src: "페페 부자.jpg", naturalW: 800, naturalH: 800, position: "bottom-right", enterFrame: 20, size: 200 },
+    pepe: { src: "페페 부자.jpg", naturalW: 800, naturalH: 800, position: "bottom-right", enterFrame: 50, size: 600 },
   },
   // 2 — AI 코딩
   {
@@ -113,6 +115,7 @@ const SCENES: SceneData[] = [
     text: "개발자들을 고용할 필요가 없었거든요",
     audio: "audio_3_개발자들을_고용할_필요가_없었거든요.mp3",
     sfx: "sfx-03-ggeojyeo.mp3",
+    sfxDelay: 20,
     durationInFrames: dur(2.899592),
     gradient: G[3],
     layout: {
@@ -124,14 +127,14 @@ const SCENES: SceneData[] = [
         { icon: faFire,      color: "#ff4757", size: 44, x: 0.5,  y: 0.92, animate: "float", opacity: 0.7 },
       ],
     },
-    pepe: { src: "물음표 페페.jpg", naturalW: 850, naturalH: 532, position: "bottom-left", enterFrame: 10, size: 180 },
+    pepe: { src: "물음표 페페.jpg", naturalW: 850, naturalH: 532, position: "bottom-left", enterFrame: 29, size: 540 },
   },
   // 4 — 기발한 생각
   {
     text: "그래서 똑똑한 개발자가 기발한 생각을 했는데요.",
     audio: "audio_4_그래서_똑똑한_개발자가_기발한_생각을_했는데요_.mp3",
     sfx: "sfx-04-1billion-iq.mp3",
-    sfxVolume: 0.5,
+    sfxVolume: 0.12,
     durationInFrames: dur(4.440816),
     gradient: G[4],
     layout: {
@@ -147,9 +150,11 @@ const SCENES: SceneData[] = [
   // 5 — 치킨
   {
     text: "바로 닭집에서 치킨을 튀기는 거였죠.",
-    audio: "audio_5_바로_닭집에서_치킨을_튀기는_거였죠_.mp3",
+    audio: "audio_5_바로_닭집에서_치킨을_튀기는_거였죠__.mp3",
     sfx: "sfx-05-vine-boom.mp3",
-    durationInFrames: dur(2.951837),
+    sfxVolume: 0.2,
+    sfxDelay: 30,
+    durationInFrames: dur(3.840000),
     gradient: G[5],
     layout: {
       kind: "split-equal",
@@ -160,13 +165,14 @@ const SCENES: SceneData[] = [
         { icon: faFire,          color: "#e17055", size: 52, x: 0.5,  y: 0.88, animate: "float",  opacity: 0.8 },
       ],
     },
-    pepe: { src: "페페 따봉.png", naturalW: 396, naturalH: 373, position: "top-right", enterFrame: 12, size: 170 },
+    pepe: { src: "페페 따봉.png", naturalW: 396, naturalH: 373, position: "top-right", enterFrame: 30, size: 510 },
   },
   // 6 — 심각한 문제
   {
     text: "그런데 심각한 문제가 터졌습니다",
     audio: "audio_6_그런데_심각한_문제가_터졌습니다.mp3",
     sfx: "sfx-06-vineboom-bass.mp3",
+    sfxVolume: 0.12,
     durationInFrames: dur(3.578776),
     gradient: G[6],
     layout: {
@@ -184,7 +190,7 @@ const SCENES: SceneData[] = [
     text: "개발자들은 개발 외에 할 줄 아는 게 없어서",
     audio: "audio_7_개발자들은_개발_외에_할_줄_아는_게_없어서.mp3",
     sfx: "sfx-07-sad-bgm.mp3",
-    sfxVolume: 0.4,
+    sfxVolume: 0.3,
     durationInFrames: dur(3.395918),
     gradient: G[7],
     layout: {
@@ -195,13 +201,14 @@ const SCENES: SceneData[] = [
         { icon: faLaptopCode, color: "#a29bfe", size: 52, x: 0.93, y: 0.85, animate: "pulse", opacity: 0.85 },
       ],
     },
-    pepe: { src: "궁금한 페페.jpg", naturalW: 610, naturalH: 591, position: "top-right", enterFrame: 18, size: 190 },
+    pepe: { src: "궁금한 페페.jpg", naturalW: 610, naturalH: 591, position: "top-right", enterFrame: 34, size: 570 },
   },
   // 8 — 닭집도 거부
   {
     text: "닭집에서도 원하지 않았거든요.",
     audio: "audio_8_닭집에서도_원하지_않았거든요_.mp3",
     sfx: "sfx-08-ggeojyeo2.mp3",
+    sfxDelay: 20,
     durationInFrames: dur(2.298776),
     gradient: G[0],
     layout: {
@@ -212,14 +219,14 @@ const SCENES: SceneData[] = [
         { icon: faFaceFrown, color: "#ff7675", size: 52, x: 0.15, y: 0.88, animate: "bounce", opacity: 0.85 },
       ],
     },
-    pepe: { src: "우는 페페.webp", naturalW: 728, naturalH: 508, position: "bottom-left", enterFrame: 8, size: 175 },
+    pepe: { src: "페페 물음표 고화질.png", naturalW: 612, naturalH: 491, position: "bottom-left", enterFrame: 23, size: 525 },
   },
   // 9 — 천재 아이디어
   {
     text: "그때 한 사람이 천재적인 아이디어를 냈습니다",
     audio: "audio_9_그때_한_사람이_천재적인_아이디어를_냈습니다.mp3",
     sfx: "sfx-09-genius.mp3",
-    sfxVolume: 0.5,
+    sfxVolume: 0.12,
     durationInFrames: dur(3.683265),
     gradient: G[1],
     layout: {
@@ -230,13 +237,14 @@ const SCENES: SceneData[] = [
         { icon: faLightbulb,  color: "#ffd60a", size: 54, x: 0.12, y: 0.85, animate: "pulse", opacity: 0.9 },
       ],
     },
-    pepe: { src: "페페 물음표 고화질.png", naturalW: 612, naturalH: 491, position: "top-left", enterFrame: 15, size: 185 },
+    pepe: { src: "페페 물음표 고화질.png", naturalW: 612, naturalH: 491, position: "top-left", enterFrame: 37, size: 555 },
   },
   // 10 — 목소리 변조
   {
     text: "바이브 코딩으로 목소리 변조 툴을 만들어서",
     audio: "audio_10_바이브_코딩으로_목소리_변조_툴을_만들어서.mp3",
     sfx: "sfx-10-yeoja.mp3",
+    sfxDelay: 45,
     durationInFrames: dur(4.649796),
     gradient: G[2],
     layout: {
@@ -253,7 +261,8 @@ const SCENES: SceneData[] = [
   {
     text: "넷카마로 인터넷 방송을 데뷔하는 거였죠",
     audio: "audio_11_넷카마로_인터넷_방송을_데뷔하는_거였죠.mp3",
-    sfx: "sfx-11-haang2.mp3",
+    sfx: "sfx-11-dudungtag.mp3",
+    sfxDelay: 20,
     durationInFrames: dur(3.631020),
     gradient: G[3],
     layout: {
@@ -265,7 +274,7 @@ const SCENES: SceneData[] = [
         { icon: faStar,  color: "#fd79a8", size: 52, x: 0.12, y: 0.88, animate: "spin",  opacity: 0.85 },
       ],
     },
-    pepe: { src: "737d3895a65de58b24ad1cd99434d91e.png", naturalW: 952, naturalH: 949, position: "bottom-right", enterFrame: 18, size: 190 },
+    pepe: { src: "737d3895a65de58b24ad1cd99434d91e.png", naturalW: 952, naturalH: 949, position: "bottom-right", enterFrame: 37, size: 570 },
   },
   // 12 — 많은 개발자들
   {
@@ -288,7 +297,9 @@ const SCENES: SceneData[] = [
   {
     text: "넷카마로 직무를 전환하여",
     audio: "audio_13_넷카마로_직무를_전환하여.mp3",
-    sfx: "sfx-13-jabassjyo.mp3",
+    sfx: "sfx-13-wowwww.mp3",
+    sfxVolume: 2.0,
+    sfxDelay: 20,
     durationInFrames: dur(2.899592),
     gradient: G[5],
     layout: {
@@ -299,13 +310,14 @@ const SCENES: SceneData[] = [
         { icon: faBolt,      color: "#74b9ff", size: 52, x: 0.12, y: 0.88, animate: "pulse",  opacity: 0.85 },
       ],
     },
-    pepe: { src: "페페 따봉.png", naturalW: 396, naturalH: 373, position: "top-right", enterFrame: 12, size: 175 },
+    pepe: { src: "페페 따봉.png", naturalW: 396, naturalH: 373, position: "top-right", enterFrame: 29, size: 525 },
   },
   // 14 — 하이닉스 재직자
   {
     text: "하이닉스 재직자들이 베풀어 주는",
     audio: "audio_14_하이닉스_재직자들이_베풀어_주는.mp3",
     sfx: "sfx-14-giga.mp3",
+    sfxVolume: 0.3,
     durationInFrames: dur(3.343673),
     gradient: G[6],
     layout: {
@@ -321,7 +333,8 @@ const SCENES: SceneData[] = [
   {
     text: "도네이션을 받아 근근히",
     audio: "audio_15_도네이션을_받아_근근히.mp3",
-    sfx: "sfx-15-katog.mp3",
+    sfx: "sfx-15-donation-botw.mp3",
+    sfxVolume: 2.5,
     durationInFrames: dur(2.638367),
     gradient: G[7],
     layout: {
@@ -333,7 +346,7 @@ const SCENES: SceneData[] = [
         { icon: faStar, color: "#fd79a8", size: 52, x: 0.12, y: 0.88, animate: "spin",  opacity: 0.8 },
       ],
     },
-    pepe: { src: "페페 부자.jpg", naturalW: 800, naturalH: 800, position: "top-left", enterFrame: 15, size: 185 },
+    pepe: { src: "페페 부자.jpg", naturalW: 800, naturalH: 800, position: "top-left", enterFrame: 27, size: 555 },
   },
   // 16 — 생계 유지 (엔딩)
   {

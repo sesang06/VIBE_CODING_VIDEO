@@ -31,7 +31,23 @@
       "Bash(npx tsc *)",
       "Bash(npm run *)",
       "Bash(npx remotion *)",
-      "Bash(ffprobe -v quiet -show_entries format=duration -of csv=p=0 /tmp/test_sfx.mp3)"
+      "Bash(ffprobe -v quiet -show_entries format=duration -of csv=p=0 /tmp/test_sfx.mp3)",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(yt-dlp --version)",
+      "Bash(yt-dlp -x --audio-format mp3 --audio-quality 0 -o 'public/audio/lyrics-source.%\\(ext\\)s' 'https://www.youtube.com/watch?v=ihcyqbFxC_4')",
+      "Bash(ffmpeg -i public/audio/lyrics-source.mp3 -t 30 -ar 16000 public/audio/lyrics-30s.mp3 -y)",
+      "Bash(yt-dlp -x --audio-format mp3 --audio-quality 0 -o 'public/audio/albireo-full.%\\(ext\\)s' 'https://www.youtube.com/watch?v=ihcyqbFxC_4')",
+      "Bash(ffmpeg -i public/audio/albireo-full.mp3)",
+      "Bash(ffmpeg -i public/audio/albireo-full.mp3 -ar 16000 public/audio/albireo-16k.mp3 -y)",
+      "Bash(wait)",
+      "Skill(preview-scene)",
+      "Bash(git add *)",
+      "WebFetch(domain:www.myinstants.com)",
+      "Bash(ffmpeg -version)",
+      "Bash(cp orig_speed/audio_*.mp3 .)",
+      "Bash(rm -rf orig_speed)"
     ]
   }
 }

@@ -5,6 +5,7 @@ import {
   Easing,
   Img,
   interpolate,
+  Sequence,
   staticFile,
   useCurrentFrame,
   useVideoConfig,
@@ -28,10 +29,27 @@ export type SceneData = {
   audio: string;
   sfx: string;
   sfxVolume?: number;
+  sfxDelay?: number;
   durationInFrames: number;
   gradient: string;
   pepe?: PepeDef;
   isLast?: boolean;
+};
+
+// Plays SFX with fade-in/out; useCurrentFrame() is local (starts at 0 when Sequence fires)
+const SfxPlayer: React.FC<{ src: string; volume: number; remaining: number }> = ({
+  src, volume, remaining,
+}) => {
+  const frame = useCurrentFrame();
+  const fadeOutStart = Math.max(4, remaining - TRANSITION_FRAMES - 2);
+  const fadeOutEnd   = Math.max(fadeOutStart + 2, remaining - TRANSITION_FRAMES);
+  const vol = interpolate(
+    frame,
+    [0, 4, fadeOutStart, fadeOutEnd],
+    [0, volume, volume, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+  return <Audio src={staticFile(`sfx/${src}`)} volume={vol} />;
 };
 
 function PepeOverlay({ pepe }: { pepe: PepeDef }) {
@@ -80,6 +98,7 @@ export const DevScene: React.FC<SceneData> = ({
   audio,
   sfx,
   sfxVolume = 0.55,
+  sfxDelay = 0,
   durationInFrames,
   gradient,
   pepe,
@@ -116,12 +135,7 @@ export const DevScene: React.FC<SceneData> = ({
         { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
       );
 
-  const sfxVol = interpolate(
-    frame,
-    [0, 4, durationInFrames - 18, durationInFrames - 5],
-    [0, sfxVolume, sfxVolume, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-  );
+  const sfxRemaining = durationInFrames - sfxDelay;
 
   const subtitleH = Math.round(height * 0.26);
   const imgZoneH = height - subtitleH;
@@ -129,7 +143,9 @@ export const DevScene: React.FC<SceneData> = ({
   return (
     <AbsoluteFill style={{ background: gradient, overflow: "hidden" }}>
       <Audio src={staticFile(`audio/${audio}`)} volume={narrationVol} />
-      <Audio src={staticFile(`sfx/${sfx}`)} volume={sfxVol} />
+      <Sequence from={sfxDelay} layout="none">
+        <SfxPlayer src={sfx} volume={sfxVolume} remaining={sfxRemaining} />
+      </Sequence>
 
       <div
         style={{

@@ -1,8 +1,10 @@
 import React from "react";
 import {
   AbsoluteFill, Audio, Easing, interpolate,
-  staticFile, useCurrentFrame,
+  staticFile, useCurrentFrame, useVideoConfig,
 } from "remotion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { loadFont } from "@remotion/fonts";
 import { TransitionSeries, springTiming, linearTiming } from "@remotion/transitions";
 import { fade }  from "@remotion/transitions/fade";
@@ -127,6 +129,47 @@ function Typewriter({ text, frame, cps = 2, exit = 1, style }: {
   );
 }
 
+// ── 떨어지는 별 (falling-star 소스 포팅) ──────────────────────────────
+// 원본: falling-star/script.js — FontAwesome ★ 아이콘이 위→아래 회전 낙하
+const FS_DATA = Array.from({ length: 72 }, (_, i) => ({
+  dur:    60 + ((i * 23) % 90),          // 60–150 프레임 (2–5 초)
+  phase:  (i * 57.3) % 1,               // 시작 시간 오프셋 0–1
+  size:   10 + ((i * 7) % 16),          // 10–26 px
+  baseOp: 0.30 + ((i * 13) % 5) * 0.07, // 0.30–0.58
+}));
+
+const FallingStars: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { height } = useVideoConfig();
+  return (
+    <>
+      {FS_DATA.map((s, i) => {
+        const elapsed  = frame + s.phase * s.dur;
+        const cycleNum = Math.floor(elapsed / s.dur);
+        const cf  = elapsed % s.dur;
+        const p   = cf / s.dur;
+        // 사이클마다 새 x — 원본 Math.random() * innerWidth 동작 재현
+        const x   = ((i * 137.508 + cycleNum * 79.312) % 100 + 100) % 100;
+        const y   = p * (height + 40) - 20;
+        const rot = p * 360;
+        const op  = p > 0.8 ? s.baseOp * (1 - (p - 0.8) / 0.2) : s.baseOp;
+        return (
+          <div key={i} style={{
+            position: "absolute", left: `${x}%`, top: 0,
+            transform: `translateY(${y}px) rotate(${rot}deg)`,
+            opacity: op, pointerEvents: "none",
+          }}>
+            <FontAwesomeIcon icon={faStar} style={{
+              fontSize: s.size, color: "#ffffff",
+              filter: "drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px rgba(200,230,255,0.9))",
+            }} />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
 // ── 비네트 ─────────────────────────────────────────────────────────────
 const Vignette: React.FC = () => (
   <AbsoluteFill style={{
@@ -218,6 +261,7 @@ const SceneCosmos: React.FC<{ gs: number; seqDur: number }> = ({ gs }) => {
           </div>
         </AbsoluteFill>
       )}
+      <FallingStars />
       <Vignette />
     </AbsoluteFill>
   );
@@ -305,6 +349,7 @@ const SceneRain: React.FC<{ gs: number; seqDur: number }> = ({ gs }) => {
           </div>
         </AbsoluteFill>
       )}
+      <FallingStars />
       <Vignette />
     </AbsoluteFill>
   );
@@ -406,6 +451,7 @@ const SceneLight: React.FC<{ gs: number; seqDur: number }> = ({ gs }) => {
           </div>
         </AbsoluteFill>
       )}
+      <FallingStars />
       <Vignette />
     </AbsoluteFill>
   );
@@ -490,6 +536,7 @@ const SceneFire: React.FC<{ gs: number; seqDur: number }> = ({ gs }) => {
           </div>
         </AbsoluteFill>
       )}
+      <FallingStars />
       <Vignette />
     </AbsoluteFill>
   );
@@ -596,6 +643,7 @@ const SceneEcho: React.FC<{ gs: number; seqDur: number }> = ({ gs, seqDur }) => 
           </div>
         </AbsoluteFill>
       )}
+      <FallingStars />
       <Vignette />
     </AbsoluteFill>
   );
